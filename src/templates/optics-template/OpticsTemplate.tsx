@@ -1,0 +1,31 @@
+"use client";
+
+import type { ReactNode } from "react";
+
+import { TemplateScaffold } from "@/templates/shared/TemplateScaffold";
+import type { SimulationControlAction } from "@/types/simulation";
+
+import type { OpticsTemplateConfig } from "./types";
+
+type OpticsTemplateProps<TParams extends Record<string, number | boolean | string>> = {
+  config: OpticsTemplateConfig<TParams>;
+  canvasOverlay?: ReactNode;
+  summary?: ReactNode;
+  actions?: SimulationControlAction[];
+};
+
+export function OpticsTemplate<TParams extends Record<string, number | boolean | string>>({
+  config,
+  canvasOverlay,
+  summary,
+  actions
+}: OpticsTemplateProps<TParams>) {
+  return (
+    <TemplateScaffold
+      actions={actions}
+      canvasOverlay={canvasOverlay}
+      config={config}
+      summary={summary}
+    />
+  );
+}
